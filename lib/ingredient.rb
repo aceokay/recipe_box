@@ -7,6 +7,6 @@ class Ingredient < ActiveRecord::Base
 private
 
   define_method(:normalize) do
-    self.name=(name().strip().capitalize())
+    self.name=(name().strip().split(/(\W)/).map(&:capitalize).join)
   end
 end

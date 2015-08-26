@@ -58,3 +58,10 @@ get('/ingredients/:id') do
   @recipes = @ingredient.recipes()
   erb(:ingredient)
 end
+
+delete('/ingredients/delete/:id') do
+  ingredient_id = params.fetch('id').to_i()
+  ingredient = Ingredient.find(ingredient_id)
+  ingredient.destroy()
+  redirect back
+end
