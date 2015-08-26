@@ -1,0 +1,30 @@
+<h1>Welcome to Your Digital Cookbook!</h1>
+<% if @recipes.empty? %>
+  <h3>You don't have any recipes!</h3>
+<% else %>
+  <ul>
+    <% @recipes.each do |recipe| %>
+    <li><a href="recipes/<%=recipe.id%>"><%= recipe.name %></a>
+      <form action="/recipes/delete/<%=recipe.id%>" method="post">
+        <input type="hidden" name="_method" value="delete">
+        <button name="delete">Delete</button>
+      </form>
+    </li>
+    <% end %>
+  </ul>
+<% end %>
+
+<form action="/recipes" method="post">
+  <input type="text" name="name" placeholder="name e.g. Turkey Sandwich">
+  <br>
+  <br>
+  <textarea class="form-control" name="instructions" placeholder="Instructions e.g. 1. Find bread." rows="5"></textarea>
+  <label for="rating">Select a Rating:  </label>
+      <br>
+  <select id="rating" name="rating">
+    <% 11.times() do |num| %>
+      <option value="<%= num %>"><%= num %></option>
+    <% end %>
+  </select>
+  <button name="button">Add Recipe!</button>
+</form>

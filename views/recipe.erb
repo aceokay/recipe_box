@@ -1,0 +1,19 @@
+<h1><%=@recipe.name%>, <%=@recipe.rating%> Star(s)!</h1>
+<ul>
+  <% @recipe.ingredients().each() do |ingredient| %>
+    <li>
+      <%= ingredient.name() %>
+      <form action="/recipes/delete/ingredients/<%= ingredient.id %>" method="post">
+        <input type="hidden" name="_method" value="delete">
+        <button name="delete">Delete</button>
+      </form>
+    </li>
+  <% end %>
+</ul>
+
+<p><%=@recipe.instructions%></p>
+
+<form class="" action="/recipes/<%= @recipe.id() %>" method="post">
+  <input type="text" name="ingredient" placeholder="Ingredient e.g. Cheese">
+  <button name="button">Add Ingredient</button>
+</form>
