@@ -25,10 +25,11 @@ end
 
 get('/recipes/:id') do
   @recipe = Recipe.find(params.fetch('id').to_i)
+  @ingredients = Ingredient.all()
   erb(:recipe)
 end
 
-post('/recipes/:id') do
+post('/recipes/:id/add/ingredients') do
   ingredient_name = params.fetch('ingredient')
   recipe_id = params.fetch('id').to_i()
   new_ingredient = Ingredient.create({:name => ingredient_name})
@@ -39,6 +40,20 @@ post('/recipes/:id') do
   else
     redirect back
   end
+end
+
+post('/recipes/:id/ingredients') do
+  recipe_id = params.fetch('id').to_i()
+  ingredient_id = params.fetch('ingredient_id').to_i()
+  recipe = Recipe.find(recipe_id)
+  recipe.ingredients().each do |ingredient|
+    if ingredient.id == ingredient_id
+      redirect back
+    end
+  end
+  ingredient = Ingredient.find(ingredient_id)
+  recipe.ingredients.push(ingredient)
+  redirect back
 end
 
 delete('/recipes/delete/ingredients/:id') do

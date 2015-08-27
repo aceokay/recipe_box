@@ -1,6 +1,10 @@
 require('spec_helper')
 
 describe(Ingredient) do
+  describe('#recipes') do
+    it { should have_and_belong_to_many(:recipes) }
+  end
+
   describe('#create') do
     it('normalizes text') do
       new_ingredient = Ingredient.create({:name => " milk    "})

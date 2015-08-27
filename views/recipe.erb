@@ -13,7 +13,19 @@
 
 <p><%=@recipe.instructions%></p>
 
-<form class="" action="/recipes/<%= @recipe.id() %>" method="post">
+<form id="add_previous_ingredient" action="/recipes/<%= @recipe.id() %>/ingredients" method="post">
+  <label for="ingredient_select">Select the Ingredient:  </label>
+    <br>
+  <select id="ingredient_id" name="ingredient_id">
+    <% @ingredients.each() do |ingredient| %>
+      <option value="<%= ingredient.id() %>"><%= ingredient.name() %></option>
+    <% end %>
+  </select>
+  <button type="submit">Submit</button>
+</form>
+
+<form class="" action="/recipes/<%= @recipe.id() %>/add/ingredients" method="post">
+  <label for="ingredient">Don't see your ingredient? Add it here:</label>
   <input type="text" name="ingredient" placeholder="Ingredient e.g. Cheese">
   <button name="button">Add Ingredient</button>
 </form>
