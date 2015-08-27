@@ -1,3 +1,29 @@
-#home-header, #home-footer {
+.home-header, .home-footer {
   text-align: center;
+  background-color: rgba(196, 185, 147, .5);
+  border-radius: 25px;
+}
+
+#home-header {
+  font-size: 2em;
+}
+
+.container {
+  font-family: 'Archivo Narrow', sans-serif;
+  font-size: 2em;
+}
+
+body {
+  background-image: url("/img/onion.jpg")
+}
+
+ul {
+  background-color: rgba(196, 185, 147, .5);
+  border-radius: 25px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+button {
+  border-radius: 25px;
 }

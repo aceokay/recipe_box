@@ -15,20 +15,20 @@
 <p><%=@recipe.instructions%></p>
 
 <form id="add_previous_ingredient" action="/recipes/<%= @recipe.id() %>/ingredients" method="post">
-  <label for="ingredient_select">Select the Ingredient:  </label>
-    <br>
-  <select id="ingredient_id" name="ingredient_id">
-    <% @ingredients.each() do |ingredient| %>
-      <option value="<%= ingredient.id() %>"><%= ingredient.name() %></option>
-    <% end %>
-  </select>
-  <button type="submit">Submit</button>
+  <div class="form-group">
+    <label for="ingredient_select">Select the Ingredient:  </label>
+      <br>
+    <select id="ingredient_id" name="ingredient_id">
+      <% @ingredients.each() do |ingredient| %>
+        <option value="<%= ingredient.id() %>"><%= ingredient.name() %></option>
+      <% end %>
+    </select>
+  </div>
+  <button class="btn btn-primary btn-sm" type="submit">Submit</button>
 </form>
 
 <form class="" action="/ingredients" method="post">
   <label for="ingredient">Don't see your ingredient? Add it here:</label>
   <input type="text" name="ingredient" placeholder="Ingredient e.g. Cheese">
-  <button name="button">Add Ingredient</button>
+  <button class="btn btn-primary btn-sm" name="button">Add Ingredient</button>
 </form>
-
-<a href="/">Home</a>

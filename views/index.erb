@@ -1,25 +1,25 @@
-<div id="home-header" class="page-header">
+<div id="home-header" class="page-header home-header">
   <h1>Welcome to Your Digital Cookbook!</h1>
 </div>
-<div class="panel panel-default">
-  <div class="panel-body">
+<!-- <div class="panel panel-default">
+  <div class="panel-body"> -->
     <% if @recipes.empty? %>
       <h3>You don't have any recipes!</h3>
     <% else %>
-      <ul class="list-unstyled">
+      <ul>
         <% @recipes.each do |recipe| %>
         <li>
           <form class="form-inline" action="/recipes/delete/<%=recipe.id%>" method="post">
             <label for=""><a href="recipes/<%=recipe.id%>"><%= recipe.name %></a></label>
             <input type="hidden" name="_method" value="delete">
-            <button class="btn btn-danger btn-xs" name="delete">Delete</button>
+            <button class="glyphicon glyphicon-remove" name="delete"></button>
           </form>
         </li>
         <% end %>
       </ul>
     <% end %>
-  </div>
-</div>
+  <!-- </div>
+</div> -->
 
 <form action="/recipes" method="post">
   <div class="form-group">
@@ -38,6 +38,6 @@
   </div>
   <button class="btn btn-primary btn-sm" name="button">Add Recipe!</button>
 </form>
-<div id="home-footer">
+<div class="home-footer">
   <a href="/ingredients">Ingredient Master List</a>
 </div>

@@ -1,20 +1,27 @@
-<h1>Ingredient Master List</h1>
-<ul>
-  <% @ingredients.each() do |ingredient|%>
-    <li>
-      <form class="form-inline" action="/ingredients/delete/<%=ingredient.id%>" method="post">
-        <label for=""><a href="ingredients/<%=ingredient.id%>"><%= ingredient.name %></a></label>
-        <input type="hidden" name="_method" value="delete">
-        <button class="btn btn-primary btn-xs" name="delete">Delete</button>
-      </form>
-    </li>
-  <% end %>
-</ul>
+<div class="home-header">
+  <h1>Ingredient Master List</h1>
+</div>
+<div class="ingredients">
+  <ul>
+    <% @ingredients.each() do |ingredient|%>
+      <li>
+        <form class="form-inline" action="/ingredients/delete/<%=ingredient.id%>" method="post">
+          <label for=""><a href="ingredients/<%=ingredient.id%>"><%= ingredient.name %></a></label>
+          <input type="hidden" name="_method" value="delete">
+          <button class="glyphicon glyphicon-remove" name="delete"></button>
+        </form>
+      </li>
+    <% end %>
+  </ul>
+</div>
 
 <form class="" action="/ingredients" method="post">
-  <label for="ingredient">Add a New Ingredient:</label>
-  <input type="text" name="name" placeholder="Ingredient e.g. Cheese">
-  <button name="button">Add Ingredient</button>
+  <div class="form-group">
+    <label for="ingredient">Add a New Ingredient:</label>
+    <input class="form-control" type="text" name="name" placeholder="Ingredient e.g. Cheese">
+  </div>
+    <button class="btn btn-primary btn-sm" name="button">Add Ingredient</button>
 </form>
+
 
 <a href="/">Home</a>
