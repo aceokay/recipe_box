@@ -1,32 +1,42 @@
-<h1>Welcome to Your Digital Cookbook!</h1>
-<% if @recipes.empty? %>
-  <h3>You don't have any recipes!</h3>
-<% else %>
-  <ul>
-    <% @recipes.each do |recipe| %>
-    <li><a href="recipes/<%=recipe.id%>"><%= recipe.name %></a>
-      <form action="/recipes/delete/<%=recipe.id%>" method="post">
-        <input type="hidden" name="_method" value="delete">
-        <button name="delete">Delete</button>
-      </form>
-    </li>
+<div class="page-header">
+  <h1>Welcome to Your Digital Cookbook!</h1>
+<div>
+<div class="panel panel-default">
+  <div class="panel-body">
+    <% if @recipes.empty? %>
+      <h3>You don't have any recipes!</h3>
+    <% else %>
+      <ul class="list-unstyled">
+        <% @recipes.each do |recipe| %>
+        <li>
+          <form class="form-inline" action="/recipes/delete/<%=recipe.id%>" method="post">
+            <label for=""><a href="recipes/<%=recipe.id%>"><%= recipe.name %></a></label>
+            <input type="hidden" name="_method" value="delete">
+            <button class="btn btn-primary btn-xs" name="delete">Delete</button>
+          </form>
+        </li>
+        <% end %>
+      </ul>
     <% end %>
-  </ul>
-<% end %>
+  </div>
+</div>
 
 <form action="/recipes" method="post">
-  <input type="text" name="name" placeholder="name e.g. Turkey Sandwich">
-  <br>
-  <br>
-  <textarea class="form-control" name="instructions" placeholder="Instructions e.g. 1. Find bread." rows="5"></textarea>
-  <label for="rating">Select a Rating:  </label>
-      <br>
-  <select id="rating" name="rating">
-    <% 11.times() do |num| %>
-      <option value="<%= num %>"><%= num %></option>
-    <% end %>
-  </select>
-  <button name="button">Add Recipe!</button>
+  <div class="form-group">
+    <input class="form-control" type="text" name="name" placeholder="name e.g. Turkey Sandwich">
+  </div>
+  <div class="form-group">
+    <textarea class="form-control" name="instructions" placeholder="Instructions e.g. 1. Find bread." rows="5"></textarea>
+  </div>
+  <div class="form-group">
+    <label for="rating">Select a Rating:  </label>
+    <select id="rating" name="rating">
+      <% 11.times() do |num| %>
+        <option value="<%= num %>"><%= num %></option>
+      <% end %>
+    </select>
+  </div>
+  <button class="btn btn-primary btn-sm" name="button">Add Recipe!</button>
 </form>
 
 <a href="/ingredients">Ingredient Master List</a>
