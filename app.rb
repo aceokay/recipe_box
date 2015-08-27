@@ -68,6 +68,12 @@ get('/ingredients') do
   erb(:ingredients)
 end
 
+post('/ingredients') do
+  name = params.fetch('name')
+  Ingredient.create({:name => name})
+  redirect back
+end
+
 get('/ingredients/:id') do
   @ingredient = Ingredient.find(params.fetch('id').to_i)
   @recipes = @ingredient.recipes()
