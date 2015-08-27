@@ -6,7 +6,7 @@
       <form class="form-inline" action="/recipes/delete/ingredients/<%= ingredient.id %>" method="post">
         <label for=""><a href="/ingredients/<%=ingredient.id%>"><%=ingredient.name %></a></label>
         <input type="hidden" name="_method" value="delete">
-        <button class="btn btn-danger btn-xs" name="delete">Delete</button>
+        <button class="glyphicon glyphicon-remove" name="delete"></button>
       </form>
     </li>
   <% end %>
