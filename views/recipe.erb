@@ -2,10 +2,11 @@
 <ul>
   <% @recipe.ingredients().each() do |ingredient| %>
     <li>
-      <%= ingredient.name() %>
-      <form action="/recipes/delete/ingredients/<%= ingredient.id %>" method="post">
+
+      <form class="form-inline" action="/recipes/delete/ingredients/<%= ingredient.id %>" method="post">
+        <label for=""><a href="/ingredients/<%=ingredient.id%>"><%=ingredient.name %></a></label>
         <input type="hidden" name="_method" value="delete">
-        <button name="delete">Delete</button>
+        <button class="btn btn-danger btn-xs" name="delete">Delete</button>
       </form>
     </li>
   <% end %>
